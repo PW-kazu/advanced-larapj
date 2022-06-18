@@ -7,12 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Author extends Model
 {
-    public function getDetail()
+    public function index()
     {
-        $txt = 'ID:'.$this->id . ' ' . $this->name . '(' . $this->age .  '才'.') '.$this->nationality;
-        return $txt;
+        $items = Author::all();
+        return view('index', ['items' => $items]);
     }
 }
-
-
 ?>

@@ -13,4 +13,4 @@ class Author extends Model
         return $txt;
     }
 }
-?>
+   
