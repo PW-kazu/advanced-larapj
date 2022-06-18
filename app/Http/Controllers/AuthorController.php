@@ -1,30 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Models;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class AuthorController extends Controller
+class Author extends Model
 {
-    public function index()
+    public function getDetail()
     {
-        $items = DB::table('authors')->get();
-        return view('index', ['items' => $items]);
-    }
-    public function add()
-    {
-        return view('add');
-    }
-    public function create(Request $request)
-    {
-        $param = [
-            'name' => $request->name,
-            'age' => $request->age,
-            'nationality' => $request->nationality,
-        ];
-        DB::table('authors')->insert($param);
-        return redirect('/');
+        $txt = 'ID:'.$this->id . ' ' . $this->name . '(' . $this->age .  '才'.') '.$this->nationality;
+        return $txt;
     }
 }
 
