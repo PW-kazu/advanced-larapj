@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illiminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 
 class AuthorController extends Controller
 {
     public function index()
     {
-        $items = DB::select('select * from authors');
-        return view('index', ['items'=>$items]);
+        $items = DB::table('authors')->get();
+        return view('index', ['items' => $items]);
     }
     public function add()
     {
@@ -23,9 +23,10 @@ class AuthorController extends Controller
             'age' => $request->age,
             'nationality' => $request->nationality,
         ];
-        DB::insert('insert into authors (name, age, nationality) values (:name, :age, :nationality)', $param);
+        DB::table('authors')->insert($param);
         return redirect('/');
     }
 }
+
 
 ?>
