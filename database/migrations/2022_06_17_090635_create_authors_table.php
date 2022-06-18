@@ -15,11 +15,11 @@ class CreateAuthorsTable extends Migration
     {
         Schema::create('authors', function (Blueprint $table) {
             $table->id();
-            $table->string('name',100);
-            $table->intenger('age');
-            $table->string('nationality',100);
-            $table->timestamps('created_at')->userCurrent()->nullable();
-            $table->timestamps('updated_at')->useCurrent()->nullable();
+            $table->string('name', 100);
+            $table->integer('age');
+            $table->string('nationality', 100);
+            $table->timestamp('created_at')->useCurrent()->nullable();
+            $table->timestamp('updated_at')->useCurrent()->nullable();
         });
     }
 
