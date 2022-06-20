@@ -2,41 +2,43 @@
 <style>
   th {
     background-color: #289ADC;
-    color: white;
-    padding: 5px 40px;
+      color: white;
+      padding: 5px 40px;
   }
-  tr:nth-child(odd) td {
+
+  tr:nth-child(odd) td{
     background-color: #FFFFFF;
   }
   td {
     padding: 25px 40px;
-      background-color: #EEEEEE;
-      text-align: center;
+    background-color: #EEEEEE;
+    text-align: center;
   }
+
   button {
     padding: 10px 20px;
-    background-color: #289ADC;
-    border: none;
-    color: white;
+      background-color: #289ADC;
+      border: none;
+      color: white;
   }
 </style>
-@section('title','edit.balade.php')
+@section('title','delete.blade.php')
 
 @section('content')
-@if(count($errors) > 0)
-<ul>
-  @foreach($errors->all() as $error)
-  <li>
-    {{$error}}
-  </li>
-  @endforeach
-</ul>
-<form action="/edit" method="POST">
+<form action="/delete" method="POST">
   <table>
     @csrf
     <tr>
       <th>
         id
+      </th>
+      <td>
+        <input type="text" name="id" value="{{$form->id}}">
+      </td>
+    </tr>
+    <tr>
+      <th>
+        name
       </th>
       <td>
         <input type="text" name="name" value="{{$form->name}}">
@@ -46,9 +48,10 @@
       <th>
         age
       </th>
-      <td>
-        <input type="text" name="age" value="{{$form->age}}">
-      </td>
+    </tr>
+    <td>
+       <input type="text" name="age" value="{{$form->age}}">
+    </td>
     </tr>
     <tr>
       <th>

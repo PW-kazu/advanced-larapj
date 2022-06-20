@@ -10,7 +10,7 @@ class AuthorController extends Controller
     public function index()
     {
         $items = Author::all();
-        return view('index', ['items' => $items]);
+        return view('index',['items' => $items]);
     }
     public function add()
     {
@@ -22,12 +22,52 @@ class AuthorController extends Controller
     }
     public function search(Request $request)
     {
-        $item = Author::find($request->input);
+        $item = Author::where('name','LIKE',"%{$request->input}%")->first();
         $param = [
-            'item' => $item,
-            'input' => $request->input
+            'input'=>$request->input,
+            'item'=>$item
         ];
         return view('find', $param);
     }
+    public function bind(Author $author)
+    {
+        $data = [
+            'item'=>$author,
+        ];
+        return view('author.binds',$data);
+    }
+    public function create(Request $request)
+    {
+        $this->validate($request,Author::$rules);
+        $form = $request->all();
+        Author::create($form);
+        return redirect('/');
+    }
+    public function update(Request $request)
+    {
+        $this->validate($request,Author::$rules);
+        $form = $request->all();
+        unset($form['_token']);
+        Author::where('id',$request->id)->update($form);
+        return redirect('/');
+    }
+
+    public function delete(Request $request)
+    {
+        $author = Author::find($request->id);
+        return view('delete',['form'=>$author]);
+    }
+    public function remove(Request $request)
+    {
+        AUthor::find($request->id)->delete();
+        return redirect('/');
+    }
+    public function relate(Request $request)
+        {
+            $items = Autor::all();
+            return view('autor.index',['items'=>$items]);
+        }
+
+    
 }
 ?>
