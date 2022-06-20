@@ -11,9 +11,11 @@ class Book extends Model
     public static $rules = array(
         'author_id' => 'required',
         'title' => 'required',
+        
     );
     public function getTitle(){
-        return 'ID'.$this->id.':'.$this->title;
+        return 'ID'.$this->id . ':' . $this->title;
     }
 }
+
 ?>

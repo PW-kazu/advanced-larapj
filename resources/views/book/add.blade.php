@@ -1,28 +1,28 @@
 @extends('layouts.default')
 <style>
-  th {
-    background-color: #289ADC;
-    color: white;
-    padding: 5px 40px;
-  }
-  td {
-    padding: 25px 40px;
-    background-color: #EEEEEE;
-    text-align: center;
-  }
-  button {
-    padding: 10px 20px;
-    background-color: #289ADC;
-    border: none;
-    color: white;
-  }
+   th {
+      background-color: #289ADC;
+      color: white;
+      padding: 5px 40px;
+    }
+    td {
+      padding: 25px 40px;
+      background-color: #EEEEEE;
+      text-align: center;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #289ADC;
+      border: none;
+      color: white;
+    }
 </style>
-@section('title','book.add.blade.php')
+@section('title', 'book.add.blade.php')
 
 @section('content')
-@if(count($errors)>0)
+@if (count($errors) > 0)
 <ul>
-  @foreach($errors->all() as $error)
+  @foreach ($errors->all() as $error)
   <li>
     {{$error}}
   </li>

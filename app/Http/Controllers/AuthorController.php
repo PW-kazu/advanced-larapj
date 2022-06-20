@@ -64,8 +64,8 @@ class AuthorController extends Controller
     }
     public function relate(Request $request)
         {
-            $items = Autor::all();
-            return view('autor.index',['items'=>$items]);
+            $items = Author::all();
+            return view('author.index',['items'=>$items]);
         }
 
     
