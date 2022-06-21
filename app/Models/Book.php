@@ -17,5 +17,4 @@ class Book extends Model
         return 'ID'.$this->id . ':' . $this->title;
     }
 }
-
 ?>
