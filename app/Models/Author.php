@@ -23,6 +23,11 @@ class Author extends Model
     return $txt;
    }
    public function book(){
-    return $this->hasOne('App\Models\Book');
+      return $this->hasOne('App\Models\Book');
    }
+
+   public function books(){
+      return $this->hasMany('App\Models\Book');
+   }
+   
 }
