@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\SessionController;
+use App\Models\Person; 
 
 Route::get('/home', [AuthorController::class, 'index']);
 Route::get('/add', [AuthorController::class, 'add']);
@@ -37,5 +38,8 @@ require __DIR__.'/auth.php';
 
 Route::get('/auth', [AuthorController::class,'check']);
 Route::post('/auth', [AuthorController::class,'checkUser']);
+Route::get('/softdelete', function () {
+    Person::find(1)->delete();
+});
 
 ?>

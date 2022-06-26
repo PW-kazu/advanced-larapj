@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Author;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AuthorFactory extends Factory
@@ -18,8 +19,8 @@ class AuthorFactory extends Factory
     {
         return [
             'name'=>$this->faker->name,
-            'age'=>$this->faker->naumberBetween(1,100),
-            'nationality'=>$this->country
+            'age'=>$this->faker->numberBetween(1,100),
+            'nationality'=>$this->faker->country
         ];
     }
 }
