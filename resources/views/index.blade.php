@@ -34,6 +34,9 @@
       {{$author->name}}
     </td>
     <td>
+      {{$author->age}}
+    </td>
+    <td>
       {{$author->nationality}}
     </td>
   </tr>
