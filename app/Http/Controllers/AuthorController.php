@@ -28,6 +28,19 @@ public function search(Request $request)
 
     return view('find',$param);
 }
+
+public function add()
+{
+    return view('add');
+}
+
+public function create(AuthorRequest $request)
+{
+    $form = $request->all();
+    Author::create($form);
+    return redirect('/');
+}
+
 }
 
 

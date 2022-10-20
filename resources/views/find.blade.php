@@ -11,7 +11,7 @@
       text-align: center;
     }
 </style>
-@section('title',find.blade.php')
+@section('title', 'find.blade.php')
 
 @section('content')
 <form action="find" method="POST">
