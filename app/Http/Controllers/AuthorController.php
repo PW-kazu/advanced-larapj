@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Author;
 use Illuminate\Http\Request;
+use App\Http\Requests\AuthorRequest;
 
 class AuthorController extends Controller
 {
@@ -23,7 +24,7 @@ public function search(Request $request)
     $author=Author::find($request->input);
     $param = [
         'author' => $author,
-        'input ' => $request->input
+        'input' => $request->input
     ];
 
     return view('find',$param);
@@ -41,6 +42,19 @@ public function create(AuthorRequest $request)
     return redirect('/');
 }
 
+public function edit(Request $request)
+{
+    $author=Author::find($request->id);
+    return view('edit',['form'=>$author]);
+}
+
+public function update(AuthorRequest $request)
+{
+    $form = $request->all();
+    unset($form['_token']);
+    Author::where('id',$request->id)->update($form);
+    return redirect('/');
+}
 }
 
 

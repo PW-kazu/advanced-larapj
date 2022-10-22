@@ -18,3 +18,5 @@ Route::get('/find', [AuthorController::class, 'find']);
 Route::post('/find', [AuthorController::class, 'search']);
 Route::get('/add', [AuthorController::class, 'add']);
 Route::post('/add', [AuthorController::class, 'create']);
+Route::get('/edit', [AuthorController::class, 'edit']);
+Route::post('/edit', [AuthorController::class, 'update']);
