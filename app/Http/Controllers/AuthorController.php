@@ -42,19 +42,29 @@ public function create(AuthorRequest $request)
     return redirect('/');
 }
 
-public function edit(Request $request)
-{
-    $author=Author::find($request->id);
-    return view('edit',['form'=>$author]);
-}
+ public function edit(Request $request)
+    {
+        $author = Author::find($request->id);
+        return view('edit', ['form' => $author]);
+    }
+    public function update(AuthorRequest $request)
+    {
+        $form = $request->all();
+        unset($form['_token']);
+        Author::where('id', $request->id)->update($form);
+        return redirect('/');
+    }
 
-public function update(AuthorRequest $request)
-{
-    $form = $request->all();
-    unset($form['_token']);
-    Author::where('id',$request->id)->update($form);
-    return redirect('/');
-}
+public function delete(Request $request)
+    {
+        $author = Author::find($request->id);
+        return view('delete', ['form' => $author]);
+    }
+    public function remove(Request $request)
+    {
+        Author::find($request->id)->delete();
+        return redirect('/');
+    }
 }
 
 
