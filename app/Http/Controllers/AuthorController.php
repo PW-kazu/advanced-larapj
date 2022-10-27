@@ -12,7 +12,7 @@ class AuthorController extends Controller
     {
         $items = Author::all();
         
-        return view('index', ['items'=>$items]);
+        return view('index', ['authors'=>$authors]);
     }
 
     public function find()
