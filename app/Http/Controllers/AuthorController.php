@@ -10,8 +10,9 @@ class AuthorController extends Controller
 {
     public function index()
     {
-        $authors = Author::all();
-        return view('index', ['authors'=>$authors]);
+        $items = Author::all();
+        
+        return view('index', ['items'=>$items]);
     }
 
     public function find()
@@ -21,10 +22,11 @@ class AuthorController extends Controller
 
 public function search(Request $request)
 {
-    $author=Author::find($request->input);
+    $author=Author::where('name','LIKE BINARY',"%{$request->input}%")->first();
     $param = [
-        'author' => $author,
-        'input' => $request->input
+        'input' => $request->input,
+        'author' => $author
+        
     ];
 
     return view('find',$param);
@@ -41,6 +43,8 @@ public function create(AuthorRequest $request)
     Author::create($form);
     return redirect('/');
 }
+
+    
 
  public function edit(Request $request)
     {
@@ -64,6 +68,14 @@ public function delete(Request $request)
     {
         Author::find($request->id)->delete();
         return redirect('/');
+    }
+
+    public function bind(Author $author)
+    {
+        $data = [
+            'author'=>$author,
+        ];
+        return view('author.binds',$data);
     }
 }
 
