@@ -10,7 +10,7 @@ class AuthorController extends Controller
 {
     public function index()
     {
-        $items = Author::all();
+        $authors = Author::all();
         
         return view('index', ['authors'=>$authors]);
     }
@@ -76,6 +76,23 @@ public function delete(Request $request)
             'author'=>$author,
         ];
         return view('author.binds',$data);
+    }
+
+    public function get()
+    {
+        $text=[
+        'content'=>'自由に入力してください',
+        ];
+        return view('middleware',$text);
+    }
+
+    public function post(Request $request)
+    {
+        $content = $request->content;
+        $text=[
+            'content'=> $content.'と入力しましたね'
+        ];
+        return view('middleware',$text);
     }
 }
 
