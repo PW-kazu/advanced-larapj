@@ -31,7 +31,7 @@
     </td>
     <td>
     @if ($author->book != null)
-    {{ $author->book->getTitle()}}
+    {{ $author->book->getTitle() }}
     @endif
     </td>
   </tr>
