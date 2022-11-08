@@ -31,7 +31,7 @@
   @endforeach
 </ul>
 @endif
-<form action="/book/add" method="opst">
+<form action="/book/add" method="post">
   <table>
   @csrf
   <tr>
