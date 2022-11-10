@@ -3,9 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Author;
+use Illuminate\Support\Facades\DB;
+use App\Models\Person;
 
-class AuthorsTableSeeder extends Seeder
+class PeopleTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +15,6 @@ class AuthorsTableSeeder extends Seeder
      */
     public function run()
     {
-        Author::factory()->count(3)->create();
+        Person::factory()->count(2)->create();
     }
 }
